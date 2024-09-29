@@ -1,0 +1,13 @@
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+local healthText = character:WaitForChild("Torso").percentIndicator.background.health
+
+
+healthText:GetPropertyChangedSignal("Text"):Connect(function()
+  
+    if tonumber(healthText.Text) ~= 0 then
+      
+        player.Character.Humanoid.Health = 0
+    end
+end)
